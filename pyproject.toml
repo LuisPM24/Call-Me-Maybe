@@ -1,0 +1,16 @@
+[project]
+name = "call-me-maybe"
+version = "1.0.0"
+requires-python = ">=3.10"
+description = "A system that translates natural language prompts into structured function calls with typed arguments."
+authors = [
+    {name = "lupalomi"}
+]
+dependencies = [
+    "numpy",
+    "pydantic"
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
