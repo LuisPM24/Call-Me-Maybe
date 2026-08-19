@@ -19,6 +19,6 @@
 # Resources
 
 - How to create your pyproject: https://docs.squarecloud.app/es/articles/how-to-create-your-pyproject
-- 
+- Pytest documentation: https://docs.pytest.org/en/stable/
 
 # Bonus
