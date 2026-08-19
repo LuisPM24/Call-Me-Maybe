@@ -1,3 +1,6 @@
 __pycache__/
 venv/
 .mypy_cache/
+.venv/
+src/*.egg-info/
+uv.lock

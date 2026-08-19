@@ -1,5 +1,3 @@
-VENV = venv
-PYTHON = $(VENV)/bin/python3
 MYPY = $(VENV)/bin/mypy
 FLAKE8 = $(VENV)/bin/flake8
 PIP = $(VENV)/bin/pip
@@ -9,20 +7,26 @@ install:
 	uv sync
 
 run:
-	uv run $(PYTHON) -m src
+	uv run python -m src
 
 debug:
-	uv run $(PYTHON) -m pdb -m src
+	uv run python -m pdb -m src
+
+test:
+	uv run pytest
 
 clean:
-	rm -rf __pycache__ src/__pycache__ .mypy_cache .pytest_cache
+	rm -rf __pycache__ src/__pycache__ tests/__pycache__
+	rm -rf .mypy_cache .pytest_cache
 
 lint:
-	uv run $(FLAKE8) .
-	uv run $(MYPY) . --warn-return-any --warn-unused-ignores --ignore-missing-imports --disallow-untyped-defs --check-untyped-defs
+	uv run flake8 .
+	uv run mypy . --warn-return-any --warn-unused-ignores \
+		--ignore-missing-imports --disallow-untyped-defs \
+		--check-untyped-defs
 
 lint-strict:
-	uv run $(FLAKE8) .
-	uv run $(MYPY) . --strict
+	uv run flake8 .
+	uv run mypy . --strict
 
-.PHONY: install run debug clean lint lint-strict
+.PHONY: install run debug test clean lint lint-strict
